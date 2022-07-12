@@ -88,6 +88,10 @@ const supports = {
 
 	// import { makeStyles } from '@material-ui/styles'
 	styles: expectAdjacentSibling(['makeStyles']),
+
+	// import { makeStyles } from "tss-react/mui"
+	mui: (i, nameSpace, parent) =>
+		nameSpace[i + 1] === 'makeStyles' && parent.callee.name !== 'makeStyles',
 };
 
 const plugins = [
@@ -299,7 +303,7 @@ function literalParser(source, opts, styles) {
 
 			switch (typeof result) {
 				case 'function': {
-					return result.apply(this, args);
+					return result.apply(this, [...args, path.parent]);
 				}
 				case 'boolean': {
 					return result;

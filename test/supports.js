@@ -55,6 +55,7 @@ describe('should support for each CSS in JS package', () => {
 		'tpl-selector.mjs',
 		'tpl-special.mjs',
 		'material-ui.jsx',
+		'tss-react.jsx',
 	].forEach((file) => {
 		it(`${file}`, () => {
 			file = require.resolve(`./fixtures/${file}`);
